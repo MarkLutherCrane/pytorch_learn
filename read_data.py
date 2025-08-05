@@ -24,3 +24,16 @@ class MyData(Dataset):
                  Number of images in the dataset
         """
         return len(self.img_path)
+
+root_dir = "hymenoptera_data/train"
+ant_label_dir = "ants"
+bees_label_dir = "bees"
+ants_dataset = MyData(root_dir, ant_label_dir)
+bees_dataset = MyData(root_dir, bees_label_dir)
+train_dataset = ants_dataset + bees_dataset
+
+print(len(train_dataset)) # 打印俩个数据集的大小
+
+# 展示一张图片
+img, label = train_dataset[124]
+img.show()
